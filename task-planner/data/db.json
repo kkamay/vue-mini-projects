@@ -1,0 +1,28 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Catch 6 Pokemon",
+      "details": "Catch at least 6 Pokemon in Kanto region.",
+      "complete": false
+    },
+    {
+      "id": 2,
+      "title": "Get The Boulder Badge",
+      "details": "Get the first badge from the gym leader Brock (Optional: Be friends with him later...).",
+      "complete": false
+    },
+    {
+      "id": 3,
+      "title": "Catch All Of The Kanto Starters",
+      "details": "Catch Bulbasaur, Charmander and Squirtle.",
+      "complete": false
+    },
+    {
+      "id": 4,
+      "title": "Get Pikachu Into A Pokeball",
+      "details": "Get my best buddy into a pokeball because of the reason that it is too heavy to carry on my shoulders. (Probably will not do it, maybe just delete the task?)",
+      "complete": false
+    }
+  ]
+}
