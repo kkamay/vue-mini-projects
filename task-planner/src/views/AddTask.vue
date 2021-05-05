@@ -5,6 +5,7 @@
 
       <label>Details:</label>
       <textarea required v-model="details"></textarea>
+      <button type="submit">Add Task</button>
   </form>
 </template>
 
@@ -18,7 +19,21 @@ export default {
     },
     methods: {
         addTask() {
+            const task = {
+                title: this.title,
+                details: this.details,
+                complete: false
+            };
 
+            fetch('http://localhost:3000/tasks', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(task)
+            }).then(() => {
+                this.$router.push('/');
+            });
         }
     }
 }
@@ -66,5 +81,6 @@ export default {
         border: 0;
         border-radius: 6px;
         font-size: 16px;
+        cursor: pointer;
     }
 </style>

@@ -1,7 +1,8 @@
 <template>
   <div class="home">
+    <FilterNav @filterChange="setFilterType($event)" :filterType="filterType" />
     <div v-if="tasks.length">
-      <div v-for="task in tasks" :key="task.id">
+      <div v-for="task in filteredTasks" :key="task.id">
         <Task :task="task" @deleteTask="getTasks()" />
       </div>
     </div>
@@ -10,15 +11,29 @@
 
 <script>
   import Task from '@/components/Task.vue';
+  import FilterNav from '@/views/FilterNav.vue';
 
   export default {
     name: 'Home',
     components: {
-      Task   
+      Task,
+      FilterNav 
     },
     data() {
       return {
-        tasks: []
+        tasks: [],
+        filterType: 'a'
+      }
+    },
+    computed: {
+      filteredTasks() {
+        if (this.filterType === 'a') {
+          return this.tasks;
+        } else if (this.filterType === 'c') {
+          return this.tasks.filter(task => task.complete);
+        } else {
+          return this.tasks.filter(task => !task.complete);
+        }
       }
     },
     mounted() {
@@ -31,6 +46,9 @@
           .then(data => {
             this.tasks = data;
           });
+      },
+      setFilterType(filterType) {
+        this.filterType = filterType;
       }
     }
   }

@@ -3,7 +3,9 @@
         <div class="actions">
             <h3 @click="showHideDetails()">{{ task.title }}</h3>
             <div class="icons">
-                <span class="material-icons">edit</span>
+                <router-link :to="{ name: 'EditTask', params: { id: task.id }}">
+                    <span class="material-icons">edit</span>
+                </router-link>
                 <span class="material-icons" @click="deleteTask()">delete</span>
                 <span class="material-icons" v-if="!task.complete" @click="complete(true)">done</span>
                 <span class="material-icons" v-if="task.complete" @click="complete(false)">close</span>
